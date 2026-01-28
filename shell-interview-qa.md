@@ -1,259 +1,317 @@
-🐚 Shell Scripting – Interview Notes & Project-Based Q&A
+# 🐚 Shell Scripting – Interview Notes & Project-Based Q&A
 
-This repository contains commonly asked Shell Scripting interview questions, basic Linux commands, and real DevOps project-based explanations.
+This repository contains **commonly asked Shell Scripting interview questions**, **basic Linux commands**, and **real DevOps project-based explanations**.
 
-📌 Commonly Used Linux Shell Commands (Basics Only)
+---
 
-Focused on daily usage and interview basics (not advanced/debug-only commands)
+## 📌 Commonly Used Linux Shell Commands (Basics Only)
 
-Command	Description
-ls	List files and directories
-cp	Copy files or directories
-mv	Move or rename files
-mkdir	Create directories
-touch	Create empty files
-vim	Edit files
-grep	Search text patterns
-df -h	Disk usage (human readable)
-free -m	Memory usage in MB
-nproc	Number of CPU cores
-📌 List All Running Processes
+> Focused on **daily usage** and **interview basics** (not advanced/debug-only commands)
+
+| Command | Description |
+|------|-----------|
+| `ls` | List files and directories |
+| `cp` | Copy files or directories |
+| `mv` | Move or rename files |
+| `mkdir` | Create directories |
+| `touch` | Create empty files |
+| `vim` | Edit files |
+| `grep` | Search text patterns |
+| `df -h` | Disk usage (human readable) |
+| `free -m` | Memory usage in MB |
+| `nproc` | Number of CPU cores |
+
+---
+
+## 📌 List All Running Processes
+
+```bash
 ps -ef
+```
 
-Print Only Process IDs (PID)
+### Print Only Process IDs (PID)
+
+```bash
 ps -ef | awk '{print $2}'
+```
 
-📌 Print Only Errors From a Remote Log File
+---
+
+## 📌 Print Only Errors From a Remote Log File
+
+```bash
 curl <remote-log-file-url> | grep -i error
+```
 
-📌 Shell Script: Print Numbers Divisible by 3 and 5 but NOT 15
-Logic:
+---
 
-Loop from 1 to 100
+## 📌 Shell Script: Print Numbers Divisible by 3 and 5 but NOT 15
 
-Divisible by 3
+### Logic
+- Loop from **1 to 100**
+- Divisible by **3**
+- Divisible by **5**
+- **NOT divisible by 15**
 
-Divisible by 5
+> Script available in `shell-chaos` repository
 
-NOT divisible by 15
+---
 
-Script available in shell-chaos repository
+## 📌 Count Number of Letter "S" in `mississippi`
 
-📌 Count Number of Letter "S" in mississippi
+```bash
 echo "mississippi" | grep -o "s" | wc -l
+```
 
+> Script available in `shell-chaos` repository
 
-Script available in shell-chaos repository
+---
 
-📌 How to Debug a Shell Script
+## 📌 How to Debug a Shell Script
+
+```bash
 set -x
+```
 
-
-✔ Enables debug mode
+✔ Enables debug mode  
 ✔ Prints each command before execution
 
-📌 What is Crontab in Linux?
+---
 
-crontab is used to schedule commands or scripts to run automatically at a specified time.
+## 📌 What is Crontab in Linux?
 
-Example: Run script daily at 2 AM
+`crontab` is used to **schedule commands or scripts** to run automatically at a specified time.
+
+### Example: Run script daily at 2 AM
+
+```bash
 0 2 * * * /home/ubuntu/script.sh
+```
 
-📌 Open a File in Read-Only Mode
+---
+
+## 📌 Open a File in Read-Only Mode
+
+```bash
 vim -R test.txt
+```
 
-📌 Difference Between Soft Link and Hard Link
-🔹 Hard Link
+---
 
-Points directly to the inode
+## 📌 Difference Between Soft Link and Hard Link
 
-Survives even if original file is deleted
+### 🔹 Hard Link
+- Points directly to the inode
+- Survives even if original file is deleted
+- Cannot span file systems
+- Cannot link directories
 
-Cannot span file systems
-
-Cannot link directories
-
+```bash
 ln file1 file2
+```
 
-🔹 Soft Link (Symbolic Link)
+### 🔹 Soft Link (Symbolic Link)
+- Acts like a shortcut
+- Breaks if original file is deleted
+- Can span file systems
+- Used for aliases (e.g., `python -> python3`)
 
-Acts like a shortcut
-
-Breaks if original file is deleted
-
-Can span file systems
-
-Commonly used for aliases (e.g., python -> python3)
-
+```bash
 ln -s file1 file2
+```
 
-📌 Difference Between break and continue
-Statement	Behavior
-break	Stops the loop completely
-continue	Skips current iteration and moves to next
-📌 Disadvantages of Shell Scripting
+---
 
-Each command spawns a new process
+## 📌 Difference Between `break` and `continue`
 
-Error handling is limited
+| Statement | Behavior |
+|--------|---------|
+| `break` | Stops the loop completely |
+| `continue` | Skips current iteration and moves to next |
 
-Weak data structures
+---
 
-Slower execution compared to compiled languages
+## 📌 Disadvantages of Shell Scripting
 
-Difficult to maintain large codebases
+- Each command spawns a new process
+- Limited error handling
+- Weak data structures
+- Slower execution compared to compiled languages
+- Difficult to maintain large scripts
 
-📌 Types of Loops in Shell Script
-Loop	Use Case
-for	Fixed number of iterations
-while	Condition-based loop
-until	Runs until condition becomes true
-📌 Is Bash Dynamically or Statically Typed?
+---
 
-✔ Dynamically Typed
+## 📌 Types of Loops in Shell Script
 
+| Loop | Use Case |
+|----|---------|
+| `for` | Fixed number of iterations |
+| `while` | Condition-based loop |
+| `until` | Runs until condition becomes true |
+
+---
+
+## 📌 Is Bash Dynamically or Statically Typed?
+
+✔ **Dynamically Typed**
+
+```bash
 x=5
 x="string"
+```
 
+No type declaration required.
 
-No type declaration required (unlike Go, Java).
+---
 
-📌 Networking Troubleshooting Utilities
-🔹 traceroute
+## 📌 Networking Troubleshooting Utilities
 
-Shows hops from source to destination
+### 🔹 traceroute
+- Shows hops from source to destination
+- Requires sudo
 
-Requires sudo
-
+```bash
 sudo traceroute google.com
+```
 
-🔹 tracepath
+### 🔹 tracepath
+- Similar to traceroute
+- No sudo required
 
-Similar to traceroute
-
-No sudo required
-
+```bash
 tracepath google.com
+```
 
-📌 Sort Names in a File
+---
+
+## 📌 Sort Names in a File
+
+```bash
 sort names.txt
+```
 
-📌 Managing Huge Log Files
+---
 
-✔ Use logrotate
+## 📌 Managing Huge Log Files
+
+✔ Use `logrotate`
 
 Features:
+- Rotate logs
+- Compress old logs
+- Delete logs after a defined period
 
-Rotate logs
+---
 
-Compress old logs
+# 🚀 Shell Scripting – Project-Based Interview Questions
 
-Delete logs after a defined period
+---
 
-🚀 Shell Scripting – Project-Based Interview Questions
-1️⃣ What shell scripting projects have you worked on?
+## 1️⃣ What shell scripting projects have you worked on?
 
-Answer:
+**Answer:**
+- AWS resource usage monitoring using AWS CLI (S3, EC2, IAM, Lambda)
+- GitHub repository audit script to list users with **read-only access**
 
-AWS resource usage monitoring using AWS CLI (S3, EC2, IAM, Lambda)
+---
 
-GitHub repository audit script to list users with read-only access
+## 2️⃣ How did you automate AWS resource monitoring?
 
-2️⃣ How did you automate AWS resource monitoring?
+**Answer:**
+- Used AWS CLI inside shell scripts
+- Collected resource details
+- Automated execution using cron
+- Logged output for auditing
 
-Answer:
+---
 
-Used AWS CLI inside shell scripts
+## 3️⃣ What is cron and how did you use it?
 
-Collected resource details
-
-Automated execution using cron
-
-Logged output for auditing
-
-3️⃣ What is cron and how did you use it?
-
-Answer:
-
+**Answer:**
 Cron is a Linux scheduler for automating tasks.
 
+```bash
 0 2 * * * /home/ubuntu/aws_usage.sh >> /home/ubuntu/aws_cron.log 2>&1
+```
 
-4️⃣ Why use >> and 2>&1?
+---
 
->> → Appends logs
+## 4️⃣ Why use `>>` and `2>&1`?
 
-2>&1 → Redirects errors to log file
+- `>>` appends logs
+- `2>&1` redirects errors to log file
 
 ✔ Helps debug cron jobs
 
-5️⃣ What is set -x?
+---
+
+## 5️⃣ What is `set -x`?
 
 Enables debug mode by printing commands before execution.
 
-6️⃣ How did you handle AWS authentication?
+---
 
-Used aws configure
+## 6️⃣ How did you handle AWS authentication?
 
-Relied on IAM roles / credentials
+- Used `aws configure`
+- Relied on IAM roles / credentials
+- Followed AWS security best practices
 
-Followed AWS security best practices
+---
 
-7️⃣ What is jq and why was it required?
+## 7️⃣ What is `jq` and why was it required?
 
-Command-line JSON parser
+- Command-line JSON parser
+- Used to extract fields from AWS CLI and GitHub API responses
 
-Used to extract fields from AWS CLI and GitHub API responses
+---
 
-8️⃣ How did GitHub read-only access script work?
+## 8️⃣ How did GitHub read-only access script work?
 
-Used curl to call GitHub API
+- Used `curl` to call GitHub API
+- Filtered users with `pull` permission using `jq`
 
-Filtered users with pull permission using jq
+---
 
-9️⃣ How did you secure GitHub tokens?
+## 9️⃣ How did you secure GitHub tokens?
 
-Stored tokens as environment variables
+- Stored tokens as environment variables
+- Avoided hardcoding credentials
 
-Avoided hardcoding credentials
+---
 
-🔟 Error Handling in Scripts
+## 🔟 Error Handling in Scripts
 
-Checked empty outputs
+- Checked empty outputs
+- Validated input arguments
+- Printed user-friendly messages
 
-Validated input arguments
+---
 
-Printed user-friendly messages
+## 1️⃣1️⃣ Possible Improvements
 
-1️⃣1️⃣ Possible Improvements
+- Argument validation
+- Timestamped logs
+- Slack/Email alerts
+- Modular functions
+- Dockerization
 
-Argument validation
+---
 
-Timestamped logs
+## 1️⃣2️⃣ Why is Shell Scripting Important in DevOps?
 
-Slack/Email alerts
+- Automation
+- CI/CD pipelines
+- System administration
+- Cloud operations
+- Tool integration
 
-Modular functions
+---
 
-Dockerization
+## 🎯 Interview Tip (IMPORTANT)
 
-1️⃣2️⃣ Why is Shell Scripting Important in DevOps?
+**Question:**  
+_Do you have hands-on experience?_
 
-Automation
-
-CI/CD pipelines
-
-System administration
-
-Cloud operations
-
-Tool integration
-
-🎯 Interview Tip (IMPORTANT)
-
-Question:
-
-Do you have hands-on experience?
-
-Answer:
-✅ Yes, I implemented shell automation projects involving AWS resource tracking, cron scheduling, logging, GitHub API integration, and permission auditing.
+**Answer:**  
+Yes, I implemented shell automation projects involving AWS resource tracking, cron scheduling, logging, GitHub API integration, and permission auditing.
