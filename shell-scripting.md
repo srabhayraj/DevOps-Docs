@@ -125,7 +125,7 @@ Common commands:
 - Deploy application scripts
 - Backup automation
   
-## Shell Scripting Skills You Gained
+## Shell Scripting Skills used in ny work experience
 - Linux automation
 - Conditional logic
 - Loops & functions
