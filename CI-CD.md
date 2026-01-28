@@ -73,8 +73,6 @@ GitHub Actions
 - Event-driven pipelines
 - YAML-based workflows
 
-👉 You have practical exposure — this is strong.
-
 ## Real-World CI/CD Flow (Interview Ready)
 
 - Developer pushes code to GitHub
