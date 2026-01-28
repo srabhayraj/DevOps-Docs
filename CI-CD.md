@@ -91,7 +91,7 @@ A: DevOps is a culture that combines development and operations to automate and 
 Q2: What is CI/CD?\
 A: CI/CD automates code integration, testing, and deployment to ensure faster and reliable releases.
 
-Q3: Jenkins vs GitHub Actions?\
+Q3: Jenkins vs GitHub Actions?
 - Jenkins: External tool, more control
 - GitHub Actions: GitHub-native, simpler setup
 
