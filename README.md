@@ -1,2 +1,3 @@
 # DevOps-Docs
-DevOps Documentation: Learning in progress.
+DevOps Documentation
+**Status:** Learning in progress
